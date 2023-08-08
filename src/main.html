@@ -1,0 +1,64 @@
+<div class="container">
+  <h1 style="text-align: center">{{name}}!</h1>
+  <form [formGroup]="form">
+    <br />
+    <h4 style="text-align: center">Library</h4>
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input
+        type="text"
+        class="form-control"
+        formControlName="libraryName"
+        placeholder="Name"
+      />
+    </div>
+
+    <h4 style="text-align: center">Arguments</h4>
+    <div formArrayName="arguments" class="form-group">
+      <div *ngFor="let argumentForm of arguments?.controls; let index = index;">
+        <div [formGroup]="argumentForm">
+          <label *ngIf="index==0">Title</label>
+          <br />
+          <input
+            type="text"
+            class="form-control"
+            formControlName="title"
+            placeholder="es. Astrophysics"
+          />
+        </div>
+      </div>
+
+      <br />
+      <button type="submit" (click)="onAddArgument()" class="btn btn-primary">
+        Add Argument
+      </button>
+    </div>
+    <!-- 
+    <h4 style="text-align: center">Authors</h4>
+    <div class="form-group">
+      <div *ngFor="let author of authors.controls; let index = index;">
+        <div [formGroup]="author">
+          <label *ngIf="index==0">name</label>
+          <br />
+          <input
+            type="text"
+            class="form-control"
+            formControlName="authorName"
+            placeholder="es. Buzz"
+          />
+          <br />
+          <input
+            type="text"
+            class="form-control"
+            formControlName="authorSurname"
+            placeholder="es. Light Year"
+          />
+        </div>
+      </div>
+    </div>
+    <br />
+    <button type="submit" (click)="onAddAuthor()" class="btn btn-primary">
+      Add Author
+    </button> -->
+  </form>
+</div>
